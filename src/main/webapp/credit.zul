@@ -1,0 +1,58 @@
+<window title="Form Search &amp; Monitoring Credit" width="900px" border="normal"
+        onOK="@command('search')"
+        apply="org.zkoss.bind.BindComposer"
+        viewModel="@id('vm') @init('com.fif.latihan.SearchViewModel')"
+        style="margin:20px auto; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" id="searchWindow">
+
+    <div style="background: #e6f7ff; padding: 15px; margin-bottom: 15px; border-radius: 4px;">
+        <hbox align="center" width="100%">
+            <label value="Keyword:" style="font-weight:bold; color:#0050b3;"/>
+            <textbox value="@bind(vm.keyword)" placeholder="Cari nama atau NIK..." width="300px" style="margin-left:10px;"/>
+
+            <button label="Search" iconSclass="z-icon-search" onClick="@command('search')"
+                    style="background:#0093e9; color:white; border:none; margin-left:10px;"/>
+            <button label="Delete" iconSclass="z-icon-trash" onClick="@command('delete')"
+                    style="background:#e74c3c; color:white; border:none; margin-left:5px;"/>
+        </hbox>
+    </div>
+
+    <listbox model="@load(vm.creditList)" emptyMessage="No credit found in the result" rows="5"
+             selectedItem="@bind(vm.selectedCredit)">
+        <listhead sizable="true">
+            <listheader label="ID" width="100px"/>
+            <listheader label="Nama" width="150px"/>
+            <listheader label="NIK" width="150px"/>
+            <listheader label="Rentang Gaji" width="150px"/>
+            <listheader label="Tujuan" width="120px"/>
+            <listheader label="Plafon" width="120px"/>
+            <listheader label="Aksi" width="100px"/>
+        </listhead>
+        <template name="model">
+            <listitem>
+                <listcell label="@load(each.id)" />
+                <listcell label="@load(each.namaLengkap)" />
+                <listcell label="@load(each.nik)" />
+                <listcell label="@load(each.rentangGaji)" />
+                <listcell label="@load(each.tujuanPengajuan)" />
+                <listcell label="@load(each.plafonPengajuan)" />
+                <listcell>
+                    <button label="Update" iconSclass="z-icon-edit" onClick="@command('update', selectedCredit=each)"
+                            style="background:#f39c12; color:white; border:none; padding:2px 5px; font-size:11px;"/>
+                </listcell>
+            </listitem>
+        </template>
+    </listbox>
+
+    <hlayout style="margin-top:20px; padding: 15px; background: #fafafa; border: 1px solid #ddd; border-radius:4px;" width="100%">
+        <image width="120px" height="120px" src="/img/avatar-placeholder.png" style="border:1px solid #ccc; background:#fff;"/>
+
+        <vlayout hflex="1" style="margin-left: 20px;">
+            <hbox><label value="NIK:" width="120px" style="font-weight:bold; display:inline-block;"/> <label value="@load(vm.selectedCredit.nik)" /></hbox>
+            <hbox><label value="Nama:" width="120px" style="font-weight:bold; display:inline-block;"/> <label value="@load(vm.selectedCredit.namaLengkap)" /></hbox>
+            <hbox><label value="No Telepon:" width="120px" style="font-weight:bold; display:inline-block;"/> <label value="@load(vm.selectedCredit.noTelp)" /></hbox>
+            <hbox><label value="Gaji:" width="120px" style="font-weight:bold; display:inline-block;"/> <label value="@load(vm.selectedCredit.rentangGaji)" /></hbox>
+            <hbox><label value="Tujuan:" width="120px" style="font-weight:bold; display:inline-block;"/> <label value="@load(vm.selectedCredit.tujuanPengajuan)" /></hbox>
+            <hbox><label value="Plafon:" width="120px" style="font-weight:bold; display:inline-block;"/> <label value="@load(vm.selectedCredit.plafonPengajuan)" /></hbox>
+        </vlayout>
+    </hlayout>
+</window>

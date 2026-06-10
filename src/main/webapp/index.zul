@@ -1,7 +1,7 @@
 <zk>
 	<window apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm')@init('com.fif.MyViewModel')"
-		validationMessages="@id('vmsgs')" width="600px" vflex="1">
+		validationMessages="@id('vmsgs')" width="100%" vflex="1">
 		<vlayout>
 			<hbox align="center" hflex="1">
 				Log message: <textbox value="@save(vm.message)"
@@ -32,6 +32,7 @@
 					</listitem>
 				</template>
 			</listbox>
+			<button label="Ke Pengajuan Kredit" href="from.zul"/>
 		</vlayout>
 	</window>
 </zk>

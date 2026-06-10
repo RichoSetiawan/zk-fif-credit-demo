@@ -190,6 +190,11 @@
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>10.0.5</version>
 				<configuration>
+					<httpConnector>
+						<port>
+							9000
+						</port>
+					</httpConnector>
 					<webApp>
 						<contextPath>/${project.artifactId}</contextPath>
 						<allowDuplicateFragmentNames>true</allowDuplicateFragmentNames>

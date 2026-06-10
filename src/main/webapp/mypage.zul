@@ -1,0 +1,34 @@
+<zk>
+    <window title="Search" width="50%" border="normal"
+            apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('vm') @init('com.fif.latihan.MyPage')" style="margin:auto" closable="true" id="myPage">
+        <vlayout hflex="1">
+            <textbox value="@bind(vm.credit.id)" id="id" hflex="1"
+                     placeholder="ID Credit" readonly="true" style="background:#eee;"/>
+
+            <textbox value="@bind(vm.credit.namaLengkap)" id="namaLengkap" hflex="1"
+                     placeholder="Masukkan Nama Lengkap Baru"/>
+
+            <textbox value="@bind(vm.credit.nik)" id="nik" hflex="1" maxlength="16"
+                     placeholder="Masukkan 16 Digit NIK Baru"/>
+
+            <textbox value="@bind(vm.credit.noTelp)" id="noTelp" hflex="1"
+                     placeholder="Masukkan Nomor Telepon Baru (Contoh: 08123xxx)"/>
+
+            <textbox value="@bind(vm.credit.rentangGaji)" id="rentangGaji" hflex="1"
+                     placeholder="Masukkan Rentang Gaji Baru"/>
+
+            <textbox value="@bind(vm.credit.tujuanPengajuan)" id="tujuanPengajuan" hflex="1"
+                     placeholder="Masukkan Tujuan Pengajuan (Contoh: Modal Usaha)"/>
+
+            <textbox value="@bind(vm.credit.plafonPengajuan)" id="plafonPengajuan" hflex="1"
+                     placeholder="Masukkan Plafon Pengajuan (Contoh: 20000000)"/>
+
+            <hbox width="100%" pack="end" style="margin-top:10px;">
+                <button label="Update Data" iconSclass="z-icon-save" onClick="@command('update')"
+                        style="background:#0093e9; color:white; font-weight:bold; border:none; padding:5px 15px;"/>
+                <button label="Batal" onClick="myPage.detach()" style="margin-left:5px;"/>
+            </hbox>
+        </vlayout>
+    </window>
+</zk>

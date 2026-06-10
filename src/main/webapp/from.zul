@@ -1,0 +1,107 @@
+<window title="Form Pengajuan Aplikasi" border="normal" width="100%" height="100%" position="center,center"
+        apply="org.zkoss.bind.BindComposer"
+        viewModel="@id('vm') @init('com.fif.latihan.FormViewModel')"
+        style="border-color: #1e90ff; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+
+    <style>
+        .z-window-header {
+        background: #0093e9;
+        background-image: linear-gradient(135deg, #0093e9 0%, #80d0c7 100%);
+        color: white;
+        font-weight: bold;
+        }
+        .z-button {
+        background: #0093e9;
+        color: white;
+        border: none;
+        }
+        .z-button:hover {
+        background: #007bb5;
+        }
+        .verified-icon {
+        color: #2ecc71;
+        font-weight: bold;
+        font-size: 14px;
+        }
+    </style>
+
+    <grid>
+        <columns>
+            <column label="Data Pengajuan" width="180px" style="background: #e6f7ff; color: #0050b3; font-weight: bold;"/>
+            <column label="Input Data" style="background: #e6f7ff; color: #0050b3; font-weight: bold;"/>
+        </columns>
+        <rows>
+            <row>
+                <label value="Nama Lengkap:" style="font-weight: bold;"/>
+                <textbox placeholder="Masukkan Nama Sesuai KTP" width="95%" constraint="no empty"
+                         value="@bind(vm.credit.namaLengkap)"/>
+            </row>
+
+            <row>
+                <label value="NIK (KTP):" style="font-weight: bold;"/>
+                <hbox align="center" width="100%">
+                    <textbox id="txtNik" placeholder="Masukkan 16 digit NIK" width="250px" maxlength="16" constraint="no empty"
+                             value="@bind(vm.credit.nik)"/>
+
+                    <button id="btnVerifikasi" label="Check NIK" mold="trendy"
+                            w:onClick="this.setVisible(false); this.nextSibling.setVisible(true);"
+                            xmlns:w="client" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                            xsi:schemaLocation="client "/>
+                    <label value="✓ Terverifikasi" sclass="verified-icon" visible="false"/>
+                </hbox>
+            </row>
+
+            <row>
+                <label value="Nomor Telepon:" style="font-weight: bold;"/>
+                <textbox placeholder="Contoh: 08123456xxx" width="95%" constraint="no empty"
+                         value="@bind(vm.credit.noTelp)"/>
+            </row>
+
+            <row>
+                <label value="Gaji:" style="font-weight: bold;"/>
+                <listbox rows="1" mold="select" width="95%" selectedItem="@bind(vm.credit.rentangGaji)">
+                    <listitem label="-- Pilih Rentang Gaji --" value="" selected="true" disabled="true"/>
+                    <listitem label="&lt; Rp 5.000.000" value="&lt; Rp 5.000.000"/>
+                    <listitem label="Rp 5.000.000 - Rp 10.000.000" value="Rp 5.000.000 - Rp 10.000.000"/>
+                    <listitem label="Rp 10.000.000 - Rp 20.000.000" value="Rp 10.000.000 - Rp 20.000.000"/>
+                    <listitem label="&gt; Rp 20.000.000" value="&gt; Rp 20.000.000"/>
+                </listbox>
+            </row>
+
+            <row>
+                <label value="Tujuan Pengajuan:" style="font-weight: bold;"/>
+                <listbox rows="1" mold="select" width="95%" selectedItem="@bind(vm.credit.tujuanPengajuan)">
+                    <listitem label="-- Pilih Tujuan --" value="" selected="true" disabled="true"/>
+                    <listitem label="Modal Usaha" value="Modal Usaha"/>
+                    <listitem label="Renovasi Rumah" value="Renovasi Rumah"/>
+                    <listitem label="Pendidikan" value="Pendidikan"/>
+                    <listitem label="Kendaraan / Elektronik" value="Kendaraan / Elektronik"/>
+                    <listitem label="Lainnya" value="Lainnya"/>
+                </listbox>
+            </row>
+
+            <row>
+                <label value="Plafon Pengajuan:" style="font-weight: bold;"/>
+                <listbox rows="1" mold="select" width="95%" selectedItem="@bind(vm.credit.plafonPengajuan)">
+                    <listitem label="-- Pilih Plafon --" value="" selected="true" disabled="true"/>
+                    <listitem label="Rp 5.000.000" value="Rp 5.000.000"/>
+                    <listitem label="Rp 10.000.000" value="Rp 10.000.000"/>
+                    <listitem label="Rp 25.000.000" value="Rp 25.000.000"/>
+                    <listitem label="Rp 50.000.000" value="Rp 50.000.000"/>
+                    <listitem label="&gt; Rp 50.000.000" value="&gt; Rp 50.000.000"/>
+                </listbox>
+            </row>
+
+            <row>
+                <cell/>
+                <hbox spacing="10px">
+                    <button label="Submit Pengajuan" height="35px" width="max-content"
+                            style="font-weight: bold; background: #0093e9;"
+                            onClick="@command('submit')"/>
+                    <button label="Batal" height="35px" width="80px"
+                            style="background: #95a5a6; color: white;" href="credit.zul"/>
+                </hbox>
+            </row>
+        </rows>
+    </grid>
+</window>
