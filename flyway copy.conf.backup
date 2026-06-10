@@ -1,0 +1,5 @@
+flyway.driver=org.hsqldb.jdbcDriver
+flyway.url=jdbc:hsqldb:file:data/db
+flyway.user=sa
+flyway.password=
+flyway.connectRetries=10

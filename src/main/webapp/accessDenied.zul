@@ -1,0 +1,6 @@
+<zk>
+    <window title="Forbidden">
+        <label>You are not authorized to access this page </label>
+        <a href="/logout" label="Back"/>
+    </window>
+</zk>
