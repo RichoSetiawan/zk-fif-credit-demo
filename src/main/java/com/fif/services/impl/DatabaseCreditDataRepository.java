@@ -10,6 +10,4 @@ import org.springframework.stereotype.Repository;
 public interface DatabaseCreditDataRepository extends JpaRepository<CreditData, String> {
     List<CreditData> findAll();
     List<CreditData> findByNamaLengkapContainingIgnoreCaseOrNikContaining(String nama, String nik);
-
-    void delete(String nama);
 }
